@@ -1,0 +1,23 @@
+table {
+    border-spacing: 15px;
+    border-collapse: collapse;
+    overflow: hidden;
+    z-index: 1;
+    background-color: #c0c0c0;
+}
+
+.highlight {
+    background: #48eac5;
+}
+
+.title-column {
+    background-color: #c0c0c0
+}
+
+.date-column {
+    background-color: #c0c0c0
+}
+
+.rating-column {
+    background-color: #c0c0c0
+}

@@ -3,18 +3,65 @@
 <h1>Movies</h1>
 
 <div id="movies">
-  <thead>
-    <th>Title</th>
-    <th>Rating</th>
-    <th>Description</th>
-    <th>Release Date</th>
-  </thead>>
-  <% @movies.each do |movie| %>
-    <%= render movie %>
-    <p>
-      <%= link_to "Show this movie", movie %>
-    </p>
-  <% end %>
+  <head>
+    <%= stylesheet_link_tag 'movie_application.css' %>
+  </head>
+  <table>
+    <thead>
+        <th class="title-column" style="background-color: <%= @title_color%>">
+          <%= link_to "Title", :sort_by => "title", :order => "ASC"%>
+          <% if @title_color == "#ffc000" %>
+            &#x25be
+          <% elsif @title_color == "#00d1ff" %>
+            &#x25b4
+          <% else %>
+            &#x25b4 &#x25be
+          <% end %>
+        </th>
+        <th class="rating-column" style="background-color: <%= @rating_color%>">
+          <%= link_to "Rating", :sort_by => "rating", :order => "ASC"%>
+          <% if @rating_color == "#ffc000" %>
+            &#x25be
+          <% elsif @rating_color == "#00d1ff" %>
+            &#x25b4
+          <% else %>
+            &#x25b4 &#x25be
+          <% end %>
+        </th>
+        <th class="date-column" style="background-color: <%= @date_color%>">
+          <%= link_to "Release Date", :sort_by => "release_date", :order => "ASC"%>
+          <% if @date_color == "#ffc000" %>
+            &#x25be
+          <% elsif @date_color == "#00d1ff" %>
+            &#x25b4
+          <% else %>
+            &#x25b4 &#x25be
+          <% end %>
+        </th>
+    </thead>
+    <tbody>
+        <% @movies.each do |movie| %>
+            <tr>
+              <th style="background-color: <%= @title_color%>">
+                <%= movie.title %>
+              </th>
+              <th style="background-color: <%= @rating_color%>">
+                <%= movie.rating %>
+              </th>
+              <th style="background-color: <%= @date_color%>">
+                <%= movie.release_date %>
+              </th>
+              <th><%= link_to "Show this movie", movie %></th>
+            </tr>
+        <% end %>
+    </tbody>
+    <!-- <tfoot>
+        <th>Title</th>
+        <th>Rating</th>
+        <th>Release Date</th>
+    </tfoot> -->
+  </table>
+
 </div>
 
 <%= link_to "New movie", new_movie_path %>
