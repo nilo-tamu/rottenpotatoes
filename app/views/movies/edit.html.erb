@@ -1,10 +1,13 @@
-<h1>Editing movie</h1>
-
-<%= render "form", movie: @movie %>
+<h1 class="edit-movie-header">Editing <%= @movie.title %></h1>
 
 <br>
 
 <div>
+  <body class="edit-movie-body">
+    <table class="edit-movie-table">
+      <%= render "form", movie: @movie %>
+    </table>
   <%= link_to "Show this movie", @movie %> |
-  <%= link_to "Back to movies", movies_path %>
+  <%= link_to "Back to movies", movies_path%>
+  </body>
 </div>

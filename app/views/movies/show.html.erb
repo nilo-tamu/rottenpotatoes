@@ -1,10 +1,42 @@
 <p style="color: green"><%= notice %></p>
+<head>
+  <%= stylesheet_link_tag 'show_movie.css' %>
+</head>
 
-<%= render @movie %>
+<h1 class="show-movie-header"><%= @movie.title %></h1>
 
 <div>
-  <%= link_to "Edit this movie", edit_movie_path(@movie) %> |
-  <%= link_to "Back to movies", movies_path %>
-
-  <%= button_to "Destroy this movie", @movie, method: :delete %>
+  <body class="show-movie-body">
+    <table class="show-movie-table">
+      <tbody>
+        <tr>
+          <th>
+            <strong>RATING</strong>
+          </th>
+          <th>
+            <%= @movie.rating %>
+          </th>
+        </tr>
+        <tr>
+          <th>
+            <strong>RELEASE DATE</strong>
+          </th>
+          <th>
+            <%= @movie.release_date %>
+          </th>
+        </tr>
+        <tr>
+          <th>
+            <strong>DESCRIPTION</strong>
+          </th>
+          <th>
+            <%= @movie.description %>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <%= link_to "Edit this movie", edit_movie_path(@movie) %> |
+    <%= link_to "Back to movies", movies_path %>
+    <%= button_to "Destroy this movie", @movie, method: :delete %>
+  </body>
 </div>

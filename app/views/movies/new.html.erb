@@ -1,9 +1,12 @@
-<h1>New movie</h1>
-
-<%= render "form", movie: @movie %>
+<h1 class="new-movie-header">Add A New Movie to RottenPotatoes</h1>
 
 <br>
 
 <div>
+  <body class="new-movie-body">
+    <strong>
+      <%= render "form", movie: @movie %>
+    </strong>
+  </body>
   <%= link_to "Back to movies", movies_path %>
 </div>
