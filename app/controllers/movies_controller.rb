@@ -12,52 +12,50 @@ class MoviesController < ApplicationController
     if params[:order] != nil
       session[:order] = params[:order]
     end
-    params[:sort_by] = session[:sort_by]
-    params[:order] = session[:order]
-    if session[:sort_by] == "title"
-      if session[:order] == @@last_title_order
+    if params[:sort_by] == "title"
+      if params[:order] == @@last_title_order
         @@last_title_order = "DESC"
         @title_color = '#00d1ff'
         @movies = Movie.order("title DESC")
       else
-        @@last_title_order = session[:order]
+        @@last_title_order = params[:order]
         @title_color = '#ffc000'
-        @movies = Movie.order(session[:sort_by])
+        @movies = Movie.order(params[:sort_by])
       end
       @@last_rating_order = ""
       @@last_date_order = ""
       @rating_color = '#c0c0c0'
       @date_color = '#c0c0c0'
-    elsif session[:sort_by] == "rating"
-      if session[:order] == @@last_rating_order
+    elsif params[:sort_by] == "rating"
+      if params[:order] == @@last_rating_order
         @@last_rating_order = "DESC"
         @rating_color = '#00d1ff'
         @movies = Movie.order("rating DESC")
       else
-        @@last_rating_order = session[:order]
+        @@last_rating_order = params[:order]
         @rating_color = '#ffc000'
-        @movies = Movie.order(session[:sort_by])
+        @movies = Movie.order(params[:sort_by])
       end
       @title_color = '#c0c0c0'
       @date_color = '#c0c0c0'
       @@last_title_order = ""
       @@last_date_order = ""
-    elsif session[:sort_by] == "release_date"
-      if session[:order] == @@last_date_order
+    elsif params[:sort_by] == "release_date"
+      if params[:order] == @@last_date_order
         @@last_date_order = "DESC"
         @date_color = '#00d1ff'
         @movies = Movie.order("release_date DESC")
       else
-        @@last_date_order = session[:order]
+        @@last_date_order = params[:order]
         @date_color = '#ffc000'
-        @movies = Movie.order(session[:sort_by])
+        @movies = Movie.order(params[:sort_by])
       end
       @title_color = '#c0c0c0'
       @rating_color = '#c0c0c0'
       @@last_rating_order = ""
       @@last_title_order = ""
     else
-      @movies = Movie.order(session[:sort_by])
+      @movies = Movie.order(params[:sort_by])
     end
   end
 
