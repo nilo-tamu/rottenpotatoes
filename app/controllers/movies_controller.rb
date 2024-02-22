@@ -12,6 +12,8 @@ class MoviesController < ApplicationController
     if params[:order] != nil
       session[:order] = params[:order]
     end
+    params[:sort_by] = session[:sort_by]
+    params[:order] = session[:order]
     if params[:sort_by] == "title"
       if params[:order] == @@last_title_order
         @@last_title_order = "DESC"
